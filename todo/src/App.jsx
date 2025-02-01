@@ -1,8 +1,10 @@
 import { useRequestGetTodos, useRequestAddTodoTask, useRequestDeleteTask, useRequestUpdateTask } from './hooks'
 import { MainPage } from './components/MainPage'
+import { TaskPage } from './components/TaskPage'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import styles from './app.module.css'
+import { FourOFour } from './components/FourOFour'
 
 
 function App() {
@@ -59,6 +61,21 @@ function App() {
               sortedTodos={sortedTodos}
             />} 
           />
+          <Route path="/task/:id" element={
+            <TaskPage 
+              todos={todos}
+              requestUpdateTask={requestUpdateTask}
+              requestDeleteTask={requestDeleteTask}
+              isUpdating={isUpdating}
+              isDeleting={isDeleting}
+              isLoading={isLoading}
+            />} 
+          />
+          <Route path='/404' element={
+            <FourOFour 
+              todos={todos}
+            />
+          }/>
         </Routes>
     </div>
   )

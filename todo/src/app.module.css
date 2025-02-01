@@ -40,6 +40,10 @@
     max-width: 400px;
     text-align: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    cursor: pointer; 
 }
 
 .addTask, .searchSection {
@@ -100,6 +104,7 @@
 
 .deleteButton:hover {
     background-color: darkred;
+    transform: scale(1.05);
 }
 
 .deleteButton:disabled {
@@ -129,4 +134,39 @@
     background-color: grey;
     cursor: not-allowed;
     transform: scale(0.95);
+}
+
+.returnButton {
+    background-color: #04f300d0;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.returnButton:hover {
+    background-color: #048300;
+    transform: scale(1.05);
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: violet;
+}
+  
+.not-found span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.not-found .button:hover {
+    background-color: #0056b3;
 }

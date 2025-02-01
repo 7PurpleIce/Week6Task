@@ -1,29 +1,24 @@
 {
   "todos": [
     {
-      "title": "L - Lesbians",
-      "completed": false,
+      "title": "dsdsdsds",
+      "completed": true,
       "id": 1
     },
     {
-      "title": "G - Gays",
-      "completed": false,
+      "title": "dsdsdsds",
+      "completed": true,
       "id": 2
     },
     {
-      "title": "B - Boris",
-      "completed": false,
+      "title": "vvvv",
+      "completed": true,
       "id": 3
     },
     {
-      "title": "T - Tak, stop, Boris, the fuck are you doing here?",
+      "title": "aaa",
       "completed": false,
       "id": 4
-    },
-    {
-      "title": "assasaas",
-      "completed": false,
-      "id": 5
     }
   ]
 }

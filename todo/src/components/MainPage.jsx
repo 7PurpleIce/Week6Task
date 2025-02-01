@@ -1,6 +1,9 @@
 import styles from '../app.module.css'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
 export const MainPage = ({newTodo, setNewTodo, handleAddTodo, isCreating, searchTerm, setSearchTerm, setIsSortEnabled, isSortEnabled, isLoading, sortedTodos}) => {
+  const navigate = useNavigate();
+
    return( 
     <div className={styles.addTask}>
           <input
@@ -37,7 +40,7 @@ export const MainPage = ({newTodo, setNewTodo, handleAddTodo, isCreating, search
           ? <div className={styles.loader}></div> 
           : (
             sortedTodos.map(({ id, title, completed }) => (
-              <div key={id} className={styles.task}>
+              <div key={id} className={styles.task} onClick={() => navigate(`/task/${id}`)}>
                 <span>{title} {completed ? '|| Completed' : '|| Pending'}</span>
               </div>
             ))
