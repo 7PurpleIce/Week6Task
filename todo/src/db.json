@@ -1,16 +1,6 @@
 {
   "todos": [
     {
-      "title": "Л - Леонид",
-      "completed": false,
-      "id": 1
-    },
-    {
-      "title": "Г - Георгий",
-      "completed": false,
-      "id": 2
-    },
-    {
       "title": "Б - Борис",
       "completed": false,
       "id": 3
@@ -19,6 +9,11 @@
       "title": "Т - Так стоп борис, че ты тут делаешь?",
       "completed": false,
       "id": 4
+    },
+    {
+      "title": "sddsadsadsda",
+      "completed": false,
+      "id": 5
     }
   ]
 }

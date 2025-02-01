@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdating, isDeleting, isLoading }) => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const task = todos.find((t) => t.id === Number(id));
-    
+    const task = todos.find((t) => t.id.toString() === id);
+
     useEffect(() => {
-        if (!isLoading && !task) {
-            navigate('/404');
+        if (!isLoading && todos.length > 0 && !task) {
+        navigate('/404');
         }
-    }, [task, isLoading, navigate]);
+    }, [task, isLoading, todos, navigate]);
 
     if (isLoading) {
         return <div className={styles.loader}></div>; 
