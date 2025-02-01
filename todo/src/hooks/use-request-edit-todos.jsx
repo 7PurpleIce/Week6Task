@@ -17,7 +17,7 @@ export const useRequestUpdateTask = (refreshTodos) => {
 
           .then((response) => {
             console.log('Task state was updated, server response', response)
-            // вызываем  функцию refreshTodos() для того что бы обновить флаг и запустить повторный рендер
+            
             refreshTodos()
           })
           .finally(() => setIsUpdating(false))
