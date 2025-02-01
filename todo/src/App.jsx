@@ -72,9 +72,7 @@ function App() {
             />} 
           />
           <Route path='*' element={
-            <FourOFour 
-              todos={todos}
-            />
+            <FourOFour />
           }/>
         </Routes>
     </div>

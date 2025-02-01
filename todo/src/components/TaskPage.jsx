@@ -10,7 +10,7 @@ export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdati
 
     useEffect(() => {
         if (!isLoading && todos.length > 0 && !task) {
-        navigate('/404');
+            navigate('/404');
         }
     }, [task, isLoading, todos, navigate]);
 
