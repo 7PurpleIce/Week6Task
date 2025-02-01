@@ -7,10 +7,6 @@ export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdati
     const { id } = useParams();
     const navigate = useNavigate();
     const task = todos.find((t) => t.id === Number(id));
-
-    console.log('ID from URL:', id);
-    console.log('Todos:', todos);
-    console.log('Found task:', task);
     
     useEffect(() => {
         if (!isLoading && !task) {
@@ -33,7 +29,7 @@ export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdati
             <p>Status: {task.completed ? 'Completed' : 'Pending'}</p>
 
             <button
-                onClick={() => requestUpdateTask(task.id, task.completed)} 
+                onClick={() => requestUpdateTask(id, task.completed)} 
                 disabled={isUpdating}
                 className={styles.updateButton}
             >

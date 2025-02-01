@@ -62,20 +62,3 @@ MainPage.propTypes = {
   sortedTodos: PropTypes.array.isRequired
 };
 
-/*
-                <button
-                  onClick={() => requestUpdateTask(id, completed)} 
-                  disabled={isUpdating}
-                  className={styles.updateButton}
-                >
-                  {isUpdating ? 'Updating...' : 'Toggle Completion'}
-                </button> 
-                
-                <button
-                  onClick={() => requestDeleteTask(id)} 
-                  disabled={isDeleting}
-                  className={styles.deleteButton}
-                >
-                  {isDeleting ? 'Deleting...' : 'Delete'}
-                </button>
-*/

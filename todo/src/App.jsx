@@ -71,7 +71,7 @@ function App() {
               isLoading={isLoading}
             />} 
           />
-          <Route path='/404' element={
+          <Route path='*' element={
             <FourOFour 
               todos={todos}
             />
