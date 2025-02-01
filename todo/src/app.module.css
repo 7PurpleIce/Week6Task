@@ -170,3 +170,9 @@
 .not-found .button:hover {
     background-color: #0056b3;
 }
+.taskText {
+    color: white;
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    max-width: 100%; 
+}

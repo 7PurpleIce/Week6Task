@@ -25,7 +25,7 @@ export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdati
     return (
         
         <div className={styles.taskPage}>
-            <h2>{task.title}</h2>
+            <h2 className={styles.taskText}>{task.title}</h2>
             <p>Status: {task.completed ? 'Completed' : 'Pending'}</p>
 
             <button
