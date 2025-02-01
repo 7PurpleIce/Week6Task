@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-// Пользовательский хук получает refreshTodoFlag из useState в App.jsx 
-// используется он для повторного вызова useEffect(повторится рендер)
+
 export const useRequestGetTodos = (refreshTodoFlag) => {
     const [todos, setTodos] = useState([])
     const [isLoading, setIsLoading] = useState(false)

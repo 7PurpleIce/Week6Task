@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// Принимает функцию refreshTodos из App.jsx
+
 export const useRequestAddTodoTask = (refreshTodos) => {
     const [isCreating, setIsCreating] = useState(false)
 
@@ -17,7 +17,7 @@ export const useRequestAddTodoTask = (refreshTodos) => {
       .then((rawResponse) => rawResponse.json())
       .then((response) => {
         console.log('Task was added, server response', response)
-        // вызываем  функцию refreshTodos() для того что бы обновить флаг и запустить повторный рендер
+        
         refreshTodos()
       })
       .finally(() => setIsCreating(false))

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// Принимает функцию refreshTodos из App.jsx
+
 export const useRequestDeleteTask = (refreshTodos) => {
     const [isDeleting, setIsDeleting] = useState(false)
 
@@ -13,7 +13,7 @@ export const useRequestDeleteTask = (refreshTodos) => {
         .then((rawResponse) => rawResponse.json())
         .then((response) => {
             console.log('Task was removed, server response', response)
-            // вызываем  функцию refreshTodos() для того что бы обновить флаг и запустить повторный рендер
+            
             refreshTodos()
         })
         .finally(() => setIsDeleting(false))
