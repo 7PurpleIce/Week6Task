@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MainPage } from './MainPage';
 import { TaskPage } from './TaskPage';
 import { Routes, Route } from 'react-router-dom';
+import { FourOFour } from './FourOFour';
 
 export const RefreshComponent = () => {
     const [refreshTodoFlag, setRefreshTodoFlag] = useState(false);
@@ -26,6 +27,12 @@ export const RefreshComponent = () => {
               refreshTodos={refreshTodos}
             />
           }
+        />
+        <Route 
+            path='*'
+            element={
+                <FourOFour />
+            }
         />
       </Routes>
     );
