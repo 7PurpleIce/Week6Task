@@ -1,10 +1,37 @@
 import styles from '../app.module.css'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom';
-export const MainPage = ({newTodo, setNewTodo, handleAddTodo, isCreating, searchTerm, setSearchTerm, setIsSortEnabled, isSortEnabled, isLoading, sortedTodos}) => {
-  const navigate = useNavigate();
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useRequestAddTodoTask, useRequestGetTodos } from '../hooks';
 
-   return( 
+export const MainPage = ({refreshTodoFlag, refreshTodos}) => {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [newTodo, setNewTodo] = useState('');
+  const [isSortEnabled, setIsSortEnabled] = useState(false);
+
+  const { isCreating, requestAddTodoTask } = 
+    useRequestAddTodoTask(refreshTodos)
+
+  const { isLoading, todos } = 
+    useRequestGetTodos(refreshTodoFlag)
+  
+  const handleAddTodo = () => {
+    requestAddTodoTask(newTodo)
+    setNewTodo('')
+  }
+
+  const filteredTodos = todos
+    .filter((todo) =>
+      todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+  
+  const sortedTodos = isSortEnabled
+    ? [...filteredTodos].sort((a, b) => a.title.localeCompare(b.title))
+    : filteredTodos;
+  
+  return( 
     <div className={styles.addTask}>
           <input
             type="text"
@@ -40,8 +67,8 @@ export const MainPage = ({newTodo, setNewTodo, handleAddTodo, isCreating, search
           ? <div className={styles.loader}></div> 
           : (
             sortedTodos.map(({ id, title, completed }) => (
-              <div key={id} className={styles.task} onClick={() => navigate(`/task/${id}`)}>
-                <span>{title} {completed ? '|| Completed' : '|| Pending'}</span>
+              <div key={id} className={styles.task}>
+                <Link to={`/task/${id}`}>{title} {completed ? '|| Completed' : '|| Pending'}</Link>
               </div>
             ))
           )}
@@ -49,16 +76,8 @@ export const MainPage = ({newTodo, setNewTodo, handleAddTodo, isCreating, search
    )
 }
 
-MainPage.propTypes = {
-  newTodo: PropTypes.string.isRequired,
-  setNewTodo: PropTypes.func.isRequired,
-  handleAddTodo: PropTypes.func.isRequired,
-  isCreating: PropTypes.bool.isRequired,
-  searchTerm: PropTypes.string.isRequired,
-  setSearchTerm: PropTypes.func.isRequired,
-  setIsSortEnabled: PropTypes.func.isRequired,
-  isSortEnabled: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  sortedTodos: PropTypes.array.isRequired
-};
 
+MainPage.propTypes = {
+  refreshTodoFlag: PropTypes.bool,
+  refreshTodos: PropTypes.func
+};

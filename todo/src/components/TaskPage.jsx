@@ -1,9 +1,19 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useRequestDeleteTask, useRequestUpdateTask, useRequestGetTodos } from '../hooks';
 import { useEffect } from 'react';
 import styles from '../app.module.css';
 import PropTypes from 'prop-types';
 
-export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdating, isDeleting, isLoading }) => {
+export const TaskPage = ({ refreshTodoFlag, refreshTodos }) => {
+    const {isDeleting, requestDeleteTask} =
+        useRequestDeleteTask(refreshTodos)
+  
+    const { isUpdating, requestUpdateTask } =
+        useRequestUpdateTask(refreshTodos)
+
+    const { isLoading, todos } = 
+        useRequestGetTodos(refreshTodoFlag)
+    
     const { id } = useParams();
     const navigate = useNavigate();
     const task = todos.find((t) => t.id.toString() === id);
@@ -50,10 +60,7 @@ export const TaskPage = ({ todos, requestUpdateTask, requestDeleteTask, isUpdati
 }
 
 TaskPage.propTypes = {
-    todos: PropTypes.array.isRequired,
-    requestUpdateTask: PropTypes.func.isRequired,
-    requestDeleteTask: PropTypes.func.isRequired,
-    isUpdating: PropTypes.bool.isRequired,
-    isDeleting: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired
-}
+    refreshTodoFlag: PropTypes.bool,
+    refreshTodos: PropTypes.func
+};
+  
